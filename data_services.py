@@ -7,7 +7,7 @@ import os
 if('query' not in os.listdir()):
     os.mkdir('query')
 #data load
-fire_station_locations = fromcsv("data/Fire_station_locations")
+fire_station_locations = fromcsv("Fire_station_locations")
 station_regions = fromcsv("data/Station-Regions.xls")
 
 #service helpers 
@@ -16,7 +16,7 @@ def JsonAccording2Region(x,file):
         tab = fire_station_locations
     else:
         tab = select(fire_station_locations,'RegionID',lambda rec: rec == str(x))
-    tab = cut(tab, 'Station Number', 'Station Name', 'Street Address', 'Phone Number', 'E-mail', 'Lat', 'Lon')
+    tab = cut(tab, 'Station Number', 'Station Name', 'Street Address', 'Phone Number', 'E-Mail', 'Lat', 'Lon')
     return returnJson(tab, file)
     
 def returnJson(table,file):
